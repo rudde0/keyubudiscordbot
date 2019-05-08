@@ -27,7 +27,7 @@ function clean(text) {
 }
 
 client.on('message', message => {
-	if (msg.channel.id === '575702218016161828') {
+	if (message.channel.id === '575702218016161828') {
 		message.react('✅');
 		message.react('❌');
 	}
