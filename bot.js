@@ -12,7 +12,7 @@ client.on('ready', () => {
 	client.user.setPresence({
 		game: {
 			name: "keyubu.com sunucularında",
-			type: "0"
+			type: 0
 		}
 	});
     //}, 60000);
