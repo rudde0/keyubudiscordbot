@@ -56,6 +56,7 @@ client.on('message', message => {
 				ATTACH_FILES: true
 			});
 			c.overwritePermissions(role2, {
+				VIEW_CHANNEL: false,
 				SEND_MESSAGES: false,
 				READ_MESSAGES: false,
 				ATTACH_FILES: true
