@@ -27,7 +27,7 @@ function clean(text) {
 }
 
 client.on('message', message => {
-	if (message.channel.id === '575702218016161828') {
+	if (message.channel.id === '536145156500488213') {
 		message.react('✅');
 		message.react('❌');
 	}
@@ -41,6 +41,7 @@ client.on('message', message => {
 			let role2 = message.guild.roles.find("name", "@everyone");
 			let role3 = message.guild.roles.find("name", "Genel Sorumlu");
 			let role4 = message.guild.roles.find("name", "Firma Sahibi");
+			//let bots = message.guild.roles.find("name", "Bot");
 			c.overwritePermissions(role, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
@@ -61,6 +62,12 @@ client.on('message', message => {
 				READ_MESSAGES: false,
 				ATTACH_FILES: true
 			});
+			/*c.overwritePermissions(bots, {
+				VIEW_CHANNEL: false,
+				SEND_MESSAGES: false,
+				READ_MESSAGES: false,
+				ATTACH_FILES: true
+			});*/
 			c.overwritePermissions(role4, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
