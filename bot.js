@@ -29,8 +29,8 @@ function clean(text) {
 client.on('message', message => {
 	if (message.channel.id === '536145156500488213') {
 		message.react('✅');
-		await sleep(500);
-		message.react('❌');
+		process.nextTick(message.react('❌'));
+		//message.react('❌');
 	}
 	if (message.content.toLowerCase().startsWith(`-destek`) || message.content.toLowerCase().startsWith(`-oluştur`) || message.content.toLowerCase().startsWith(`-olustur`) || message.content.toLowerCase().startsWith(`-new`)) {
 		const reason = message.content.split(" ").slice(1).join(" ");
