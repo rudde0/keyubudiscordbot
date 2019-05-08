@@ -80,7 +80,7 @@ client.on('message', message => {
 				},
 				//title: "Ticket oluşturuldu!",
 				//url: "https://www.keyubu.com/",
-				description: `${message.author.username} için destek hattı oluşturuldu.\n\nBu kanalda sorununuzla ilgili bilgi veriniz.\nYetkilileri etiketlemeyin, müsait olunca ticket cevaplanılır.\nSorununuz çözüldüğü zaman `-kapat` yazarak odayı kapatınız.`,
+				description: "\nBu kanalda sorununuzla ilgili bilgi veriniz.\nYetkilileri etiketlemeyin, müsait olunca ticket cevaplanılır.\nSorununuz çözüldüğü zaman `-kapat` yazarak odayı kapatınız.",
 				timestamp: new Date(),
 				footer: {
 					icon_url: client.user.avatarURL,
