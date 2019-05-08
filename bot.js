@@ -117,4 +117,4 @@ client.on('message', message => {
 		});
 	}
 });
-client.login(process.ENV.keyubu.token);
+client.login(process.env.keyubu.token);
