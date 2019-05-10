@@ -39,7 +39,8 @@ client.on('message', message => {
 	}
 	if (message.content.toLowerCase().startsWith(`-destek`) || message.content.toLowerCase().startsWith(`-oluştur`) || message.content.toLowerCase().startsWith(`-olustur`) || message.content.toLowerCase().startsWith(`-new`)) {
 		const reason = message.content.split(" ").slice(1).join(" ");
-		if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
+		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
+		if (!message.channel.id === '576424671675940865') return message.channel.send(`Sistem, sadece #destek-hattı-oluştur kanalında çalıştırılabilir.`);
 		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
 		message.guild.createChannel(`🎫${message.author.username}`, "text").then(c => {
 			c.setTopic(`${reason}`);
