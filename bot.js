@@ -27,7 +27,7 @@ function clean(text) {
 }
 
 client.on('message', message => {
-	if (message.channel.id === '536145156500488213') {
+	if (message.channel.id === '576411973357666314' || message.channel.id === '576412044664897552') {
 		message.react('✅');
 		//process.nextTick(message.react('❌'));
 		message.react('❌');
