@@ -48,6 +48,7 @@ client.on('message', message => {
 			let role2 = message.guild.roles.find("name", "@everyone");
 			let role3 = message.guild.roles.find("name", "Genel Sorumlu");
 			let role4 = message.guild.roles.find("name", "Firma Sahibi");
+			let role5 = message.guild.roles.find("name", "Keyubu Bot");
 			//let bots = message.guild.roles.find("name", "Bot");
 			c.overwritePermissions(role, {
 				SEND_MESSAGES: true,
@@ -76,6 +77,13 @@ client.on('message', message => {
 				ATTACH_FILES: true
 			});*/
 			c.overwritePermissions(role4, {
+				SEND_MESSAGES: true,
+				READ_MESSAGES: true,
+				MANAGE_CHANNELS: true,
+				MANAGE_MESSAGES: true,
+				ATTACH_FILES: true
+			});
+			c.overwritePermissions(role5, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
 				MANAGE_CHANNELS: true,
