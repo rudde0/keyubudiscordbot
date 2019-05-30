@@ -45,9 +45,6 @@ client.on('message', message => {
 		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
 		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
 		message.guild.createChannel(`🎫müşterinot-${message.author.username}`, "text").then(c => {
-			//let channel = server.channels.find(c => c.name == "general" && c.type == "text");
-			//let category = server.channels.find(c => c.name == "🔨Yönetim Alanı" && c.type == "category");
-			//if (!category) throw new Error("Category channel does not exist");
 			//c.setParent('576413968080437258');
 			c.setTopic(`${reason}`);
 			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
@@ -56,6 +53,7 @@ client.on('message', message => {
 			let role4 = message.guild.roles.find("name", "Firma Sahibi");
 			let role5 = message.guild.roles.find("name", "Keyubu Bot");
 			//let bots = message.guild.roles.find("name", "Bot");
+			c.setParent('576413968080437258');
 			c.overwritePermissions(role, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
