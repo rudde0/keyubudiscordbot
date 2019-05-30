@@ -53,7 +53,7 @@ client.on('message', message => {
 			let role4 = message.guild.roles.find("name", "Firma Sahibi");
 			let role5 = message.guild.roles.find("name", "Keyubu Bot");
 			//let bots = message.guild.roles.find("name", "Bot");
-			message.guild.channels.find(channel => channel.name === `🎫müşterinot-${message.author.username}`).setParent('576413968080437258');
+			//message.guild.channels.find(channel => channel.name === `🎫müşterinot-${message.author.username}`).setParent('576413968080437258');
 			c.overwritePermissions(role, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
