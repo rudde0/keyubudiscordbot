@@ -37,14 +37,15 @@ client.on('message', message => {
 		    message.react('❌');
 		})();*/
 	}
-	if (message.content.toLowerCase().startsWith(`-yoneticinot`)) {
+	if (message.content.toLowerCase().startsWith(`-yoneticinot`) || message.content.toLowerCase().startsWith(`-yöneticinot`)) {
+		var server = message.guild;
+		var categoryID = server.categories.find("🔨Yönetim Alanı","Text Channels");
 		const reason = message.content.split(" ").slice(1).join(" ");
 		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
 		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
 		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
-		let category = message.guild.channels.find(c => c.name == "Yönetim Alanı" && c.type == "category");
 		message.guild.createChannel(`🎫özel.${message.author.username}`, "text").then(c => {
-			if (category) c.setParent(category.id);
+			c.setParent(categoryID);
 			c.setTopic(`${reason}`);
 			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
 			let role2 = message.guild.roles.find("name", "@everyone");
