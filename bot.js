@@ -45,7 +45,6 @@ client.on('message', message => {
 		let category = message.guild.channels.find(c => c.name == "🔨Yönetim Alanı" && c.type == "category");
 		message.guild.createChannel(`🎫özel.${message.author.username}`, "text").then(c => {
 			if (category) c.setParent(category.id);
-			else console.error(`Kanallardan birisi bulunamadi:\nKategori: ${!!category}\nKanal: ${!!channel}`);
 			c.setTopic(`${reason}`);
 			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
 			let role2 = message.guild.roles.find("name", "@everyone");
