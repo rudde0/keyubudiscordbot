@@ -38,6 +38,7 @@ client.on('message', message => {
 		})();*/
 	}
 	if (message.content.toLowerCase().startsWith(`-yoneticinot`)) {
+		message.channel.send(`debug`);
 		const reason = message.content.split(" ").slice(1).join(" ");
 		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
 		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
