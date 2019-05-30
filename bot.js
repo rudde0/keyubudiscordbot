@@ -48,7 +48,7 @@ client.on('message', message => {
 			//let channel = server.channels.find(c => c.name == "general" && c.type == "text");
 			//let category = server.channels.find(c => c.name == "🔨Yönetim Alanı" && c.type == "category");
 			//if (!category) throw new Error("Category channel does not exist");
-			c.setParent('576413968080437258');
+			//c.setParent('576413968080437258');
 			c.setTopic(`${reason}`);
 			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
 			let role2 = message.guild.roles.find("name", "@everyone");
