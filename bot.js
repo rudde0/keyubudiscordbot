@@ -37,6 +37,87 @@ client.on('message', message => {
 		    message.react('❌');
 		})();*/
 	}
+	if (message.content.toLowerCase().startsWith(`-yöneticinot`)) {
+		const reason = message.content.split(" ").slice(1).join(" ");
+		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
+		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
+		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
+		let category = server.channels.find(c => c.name == "🔨Yönetim Alanı" && c.type == "category");
+		message.guild.createChannel(`🎫özel.${message.author.username}`, "text").then(c => {
+			if (category && channel) c.setParent(category.id);
+			else console.error(`Kanallardan birisi bulunamadi:\nKategori: ${!!category}\nKanal: ${!!channel}`);
+			c.setTopic(`${reason}`);
+			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
+			let role2 = message.guild.roles.find("name", "@everyone");
+			let role3 = message.guild.roles.find("name", "Genel Sorumlu");
+			let role4 = message.guild.roles.find("name", "Firma Sahibi");
+			let role5 = message.guild.roles.find("name", "Keyubu Bot");
+			//let bots = message.guild.roles.find("name", "Bot");
+			c.overwritePermissions(role, {
+				SEND_MESSAGES: true,
+				READ_MESSAGES: true,
+				MANAGE_CHANNELS: true,
+				MANAGE_MESSAGES: true,
+				ATTACH_FILES: true
+			});
+			c.overwritePermissions(role3, {
+				SEND_MESSAGES: true,
+				READ_MESSAGES: true,
+				MANAGE_CHANNELS: true,
+				MANAGE_MESSAGES: true,
+				ATTACH_FILES: true
+			});
+			c.overwritePermissions(role2, {
+				VIEW_CHANNEL: false,
+				SEND_MESSAGES: false,
+				READ_MESSAGES: false,
+				ATTACH_FILES: true
+			});
+			/*c.overwritePermissions(bots, {
+				VIEW_CHANNEL: false,
+				SEND_MESSAGES: false,
+				READ_MESSAGES: false,
+				ATTACH_FILES: true
+			});*/
+			c.overwritePermissions(role4, {
+				SEND_MESSAGES: true,
+				READ_MESSAGES: true,
+				MANAGE_CHANNELS: true,
+				MANAGE_MESSAGES: true,
+				ATTACH_FILES: true
+			});
+			c.overwritePermissions(role5, {
+				SEND_MESSAGES: true,
+				READ_MESSAGES: true,
+				MANAGE_CHANNELS: true,
+				MANAGE_MESSAGES: true,
+				ATTACH_FILES: true
+			});
+			c.send({embed: {
+				color: 3447003,
+				author: {
+					name: `${message.author.username} için destek hattı oluşturuldu.`,
+					icon_url: message.author.avatarURL
+				},
+				//title: "Ticket oluşturuldu!",
+				//url: "https://www.keyubu.com/",
+				description: "\nÖzel not hattı başarıyla oluşturuldu!\nMüşteri için özel notlar kanalın\niçerisine girilebilir.\n\nOlay kapandığı zaman `-kapat` yazarak hattı kapatabilirsiniz.",
+				timestamp: new Date(),
+				footer: {
+					icon_url: client.user.avatarURL,
+					text: "© Keyubu"
+				}
+			}
+			});
+		});
+		var embed = new Discord.RichEmbed()
+		.setColor('#00FF00')
+		.setTimestamp()
+		//.setAuthor("Keyubu Ticket", message.guild.iconURL)
+		//.setThumbnail(message.guild.iconURL)
+		.addField("Özel not hattı oluşturuldu:", "Müşteri not kanalı oluşturuldu.")
+		message.channel.send({embed: embed});
+	}
 	if (message.content.toLowerCase().startsWith(`-destek`) || message.content.toLowerCase().startsWith(`-oluştur`) || message.content.toLowerCase().startsWith(`-olustur`) || message.content.toLowerCase().startsWith(`-new`)) {
 		const reason = message.content.split(" ").slice(1).join(" ");
 		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
