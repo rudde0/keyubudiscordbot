@@ -43,7 +43,7 @@ client.on('message', message => {
 		const reason = message.content.split(" ").slice(1).join(" ");
 		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
 		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
-		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
+		//if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
 		message.guild.createChannel(`🎫müşterinot-${message.author.username}`, "text").then(c => {
 			//c.setParent('576413968080437258');
 			c.setTopic(`${reason}`);
@@ -53,7 +53,7 @@ client.on('message', message => {
 			let role4 = message.guild.roles.find("name", "Firma Sahibi");
 			let role5 = message.guild.roles.find("name", "Keyubu Bot");
 			//let bots = message.guild.roles.find("name", "Bot");
-			c.setParent('576413968080437258');
+			message.guild.channels.find(channel => channel.name === `🎫müşterinot-${message.author.username}`).setParent('576413968080437258');
 			c.overwritePermissions(role, {
 				SEND_MESSAGES: true,
 				READ_MESSAGES: true,
