@@ -39,13 +39,16 @@ client.on('message', message => {
 	}
 	if (message.content.toLowerCase().startsWith(`-yoneticinot`) || message.content.toLowerCase().startsWith(`-yöneticinot`)) {
 		var server = message.guild;
-		var categoryID = server.categories.find("🔨Yönetim Alanı","Text Channels");
+		//var categoryID = server.categories.find("🔨Yönetim Alanı","Text Channels");
 		const reason = message.content.split(" ").slice(1).join(" ");
 		//if (!message.channel.name.startsWith(`🔹bot`)) return message.channel.send(`Sistem, sadece komut kanalında çalıştırılabilir.`);
 		if (!message.channel.id === '583407442956910602') return message.channel.send(`Sistem, sadece #özel-not-çıkart kanalında çalıştırılabilir.`);
 		if (message.guild.channels.exists("name", "🎫" + message.author.username)) return message.channel.send(`Halihazırda açık bir ticketiniz var.`);
 		message.guild.createChannel(`🎫özel.${message.author.username}`, "text").then(c => {
-			c.setParent(categoryID);
+			let channel = server.channels.find(c => c.name == "general" && c.type == "text");
+			let category = server.channels.find(c => c.name == "🔨Yönetim Alanı" && c.type == "category");
+			//if (!category) throw new Error("Category channel does not exist");
+			channel.setParent(category.id);
 			c.setTopic(`${reason}`);
 			let role = message.guild.roles.find("name", "Sunucu Destek Ekibi");
 			let role2 = message.guild.roles.find("name", "@everyone");
